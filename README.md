@@ -41,3 +41,16 @@ Documentation on the following variables coming soon.
 ### grove_url
 
 ### grove_message
+
+## Author
+
+`capistrano-grove` is written by Spike Grobstein  
+spikegrobstein@mac.com  
+http://spike.grobste.in  
+https://github.com/spikegrobstein  
+
+## License
+
+&copy;2012 Spike Grobstein
+MIT License (see `LICENSE` file included in this package).
+
