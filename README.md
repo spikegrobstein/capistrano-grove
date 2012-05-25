@@ -8,6 +8,10 @@ In your application's `Gemfile` put the following:
 
     gem 'capistrano-grove', 'git://github.com/spikegrobstein/capistrano-grove.git'
 
+At the top of your `Capfile` you should also add the following:
+
+    require 'capistrano-grove/capistrano'
+
 Once you get your gems installed via `bundle install`, you can configure
 `capistrano-grove`.
 
