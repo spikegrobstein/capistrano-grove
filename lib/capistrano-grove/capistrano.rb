@@ -1,38 +1,48 @@
 require 'capistrano'
-require 'grove-rb'
+require 'capistrano-grove'
 
-Capistrano::Configuration.instance.load do
-  set :grove_channel_key, '' # the channel's API key
-  set :grove_service, 'DeployBot' # the name of the service posting
-  set :grove_icon_url, nil # url to the icon to use.
-  set :grove_url, nil # the url you want to use for your bot
+module Capistrano
+  module Grove
 
-  # the message that gets posted.
-  # set this before calling grove:notify to customize
-  set(:grove_message) {
-    "Successful deployment of #{ application }."
-  }
+    def self.load_into(config)
+      config.load do
+        set :grove_channel_key, '' # the channel's API key
+        set :grove_service, 'DeployBot' # the name of the service posting
+        set :grove_icon_url, nil # url to the icon to use.
+        set :grove_url, nil # the url you want to use for your bot
 
-  on :load do
-    after 'deploy', 'grove:notify'
-  end
+        # the message that gets posted.
+        # set this before calling grove:notify to customize
+        set(:grove_message) {
+          "Successful deployment of #{ fetch(:application, 'application') }."
+        }
+
+        on :load do
+          after 'deploy', 'grove:notify'
+        end
 
 
-  namespace :grove do
+        namespace :grove do
 
-    desc "Notify the grove.io service."
-    task :notify do
-      g = Grove.new(grove_channel_key,
-        :service => grove_service,
-        :icon_url => grove_icon_url,
-        :url => grove_url
-      )
+          desc "Notify the grove.io service."
+          task :notify do
+            g = Client.new(grove_channel_key,
+              :service => grove_service,
+              :icon_url => grove_icon_url,
+              :url => grove_url
+            )
 
-      response = g.post(grove_message)
-      if response.status >= 400
-        # error
-        logger.important "Failed to send notification to grove.io"
+            if g.notify(grove_message)
+              # error
+              logger.important "Failed to send notification to grove.io"
+            end
+          end
+        end
       end
     end
   end
+end
+
+if Capistrano::Configuration.instance
+  Capistrano::Grove.load_into(Capistrano::Configuration.instance)
 end
