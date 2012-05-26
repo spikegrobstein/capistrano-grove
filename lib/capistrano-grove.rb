@@ -1,4 +1,5 @@
 require "capistrano-grove/version"
+require "grove-rb"
 
 module Capistrano
   module Grove
