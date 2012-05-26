@@ -16,7 +16,7 @@ Once you get your gems installed via `bundle install`, you can configure
 `capistrano-grove`.
 
 The only required parameter to use this plugin is the `grove_channel_key` variable.
-You should initialize it as follows:
+You can get your channel key from the grove.io website. Initialize it as follows:
 
     set :grove_channel_key, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
