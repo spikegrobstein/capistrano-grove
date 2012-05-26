@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('capistrano', '>= 2.12.0')
-  s.add_dependency('grove-rb', '> 0.1.0')
+  s.add_dependency('grove-rb', '>= 0.2.0')
 end
