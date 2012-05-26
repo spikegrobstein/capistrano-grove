@@ -32,7 +32,7 @@ module Capistrano
               :url => grove_url
             )
 
-            if g.notify(grove_message)
+            unless g.notify(grove_message)
               # error
               logger.important "Failed to send notification to grove.io"
             end
