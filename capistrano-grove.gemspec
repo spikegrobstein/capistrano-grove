@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Capistrano::Grove::VERSION
   s.authors     = ["Spike Grobstein"]
   s.email       = ["spikegrobstein@mac.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/spikegrobstein/capistrano-grove"
   s.summary     = %q{Post to grove.io after a deploy.}
   s.description = %q{Customizable Capistrano tasks for communicating with the grove.io webservice.}
 
