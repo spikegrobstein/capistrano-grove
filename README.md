@@ -10,7 +10,7 @@ In your application's `Gemfile` put the following:
 
 At the top of your `Capfile` you should also add the following:
 
-    require 'capistrano-grove/capistrano'
+    require 'grove/capistrano'
 
 Once you get your gems installed via `bundle install`, you can configure
 `capistrano-grove`.
