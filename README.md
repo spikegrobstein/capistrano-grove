@@ -30,17 +30,34 @@ To automatially notify on grove.io after a deploy, set an `after` hook:
 
 ## Variables
 
-Documentation on the following variables coming soon.
-
 ### grove_channel_key
+
+The channel key from the grove.io website. This is the only variable that is required
+to get `capistrano-grove` working.
 
 ### grove_service
 
+The name of the service that the notification comes from. This should not contain
+spaces as that causes the grove.io webservice some grief.
+
 ### grove_icon_url
+
+This is the URL to the icon that your notification uses.
 
 ### grove_url
 
+When clicking your notification in the grove.io notification window, this is the URL
+that you're taken to.
+
 ### grove_message
+
+Each time that the `grove:notify` task is run, `grove_message` is the message that
+is posted. Typically, you'd want to set this with a block so it can be lazily
+evaluated.
+
+It defaults to:
+
+    "Successful deployment of #{ fetch(:application, 'application') }."
 
 ## Author
 
