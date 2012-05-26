@@ -1,7 +1,7 @@
 require 'capistrano'
 require 'grove-rb'
 
-require File.dirname(__FILE__) + '/../../lib/capistrano-grove/capistrano'
+require File.dirname(__FILE__) + '/../../lib/grove/capistrano'
 
 describe Capistrano::Grove do
 
