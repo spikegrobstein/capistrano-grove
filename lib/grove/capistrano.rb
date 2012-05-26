@@ -17,11 +17,6 @@ module Capistrano
           "Successful deployment of #{ fetch(:application, 'application') }."
         }
 
-        on :load do
-          after 'deploy', 'grove:notify'
-        end
-
-
         namespace :grove do
 
           desc "Notify the grove.io service."
