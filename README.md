@@ -6,14 +6,19 @@ Easily send notifications to your [grove.io](http://grove.io) channel after a de
 
 In your application's `Gemfile` put the following:
 
-    gem 'capistrano-grove', 'git://github.com/spikegrobstein/capistrano-grove.git'
+    gem 'capistrano-grove'
+
+
+Once you get your gems installed via `bundle install`, you can configure
+`capistrano-grove`.
+
+Alternatively, you can install `capistrano-grove` via `gem`:
+
+    gem install capistrano-grove
 
 At the top of your `Capfile` you should also add the following:
 
     require 'grove/capistrano'
-
-Once you get your gems installed via `bundle install`, you can configure
-`capistrano-grove`.
 
 The only required parameter to use this plugin is the `grove_channel_key` variable.
 You can get your channel key from the grove.io website. Initialize it as follows:
