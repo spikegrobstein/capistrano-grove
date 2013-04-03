@@ -30,10 +30,21 @@ This gem plugs into those notifications and sends them to your grove.io channel.
 Once you've gone through the above installation procedure, all you need to do is set
 your `grove_channel_token` as a Capistrano variable as follows:
 
-    set :grove_channel_key, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    set :grove_channel_token, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 With that, you'll start receiving notifications to your channel for migrations,
 deployment and maintenance page changes.
+
+In addition to the above, you can configure how your messages appear:
+
+    set :grove_service_name, 'MyDeployer'
+    set :grove_icon_url, 'https://grove.io/static/img/webapp-logo.png'
+    set :grove_url, 'http://example.com'
+
+Because Capistrano::Grove is built on Capnotify, you should refer to that documentation
+for further customizing the messages that are posted to your channel:
+
+https://github.com/spikegrobstein/capnotify
 
 You can also use the `grove.notify` function anywhere in your Capistrano recipes to post
 messages to your channel ad-hoc. For example:
@@ -46,12 +57,13 @@ The following are Capistrano variables and are used via the `set` function.
 
 ### grove_channel_token
 
-The channel key from the grove.io website. This is the only variable that is required
+The channel token from the grove.io website. This is the only variable that is required
 to get Capistrano::Grove working.
 
 ### grove_service
 
 The name of the service, aka the handle of the user, that the notification comes from.
+This defaults to 'Deploybot'
 
 *This should not contain spaces as that causes the grove.io webservice some grief.*
 
