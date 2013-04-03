@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency('capnotify', "~> 0.1.0pre")
+  s.add_dependency('capnotify', "~> 0.1.2pre")
   s.add_dependency('grove-rb', '>= 0.2.0')
 
   s.add_development_dependency('rspec')
