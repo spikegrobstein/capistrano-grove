@@ -28,24 +28,26 @@ module Capistrano
         # the url you want to use for your bot
         _cset :grove_url, nil
 
-        # the message that gets posted.
-        # set this before calling grove:notify to customize
-        _cset(:grove_message) {
-          "Successful deployment of #{ fetch(:application, 'application') }."
-        }
+        # capnotify hooks
+        on(:deploy_start) { grove.notify fetch(:capnotify_deploy_start_message) }
+        on(:deploy_complete) { grove.notify fetch(:capnotify_deploy_complete_message) }
+        on(:migrate_start) { grove.notify fetch(:capnotify_migrate_start_message) }
+        on(:migrate_complete) { grove.notify fetch(:capnotify_migrate_complete_message) }
+        on(:maintenance_page_up) { grove.notify fetch(:capnotify_maintenance_page_up_message) }
+        on(:maintenance_page_down) { grove.notify fetch(:capnotify_maintenance_page_down_message) }
 
       end
     end
 
     # send a notification to the grove service
-    def notify(message=nil)
+    def notify(message)
       g = Client.new(grove_channel_key,
         :service => grove_service,
         :icon_url => grove_icon_url,
         :url => grove_url
       )
 
-      unless g.notify(message || fetch(:grove_message))
+      unless g.notify(message)
         # error
         logger.important "Failed to send notification to grove.io"
       end

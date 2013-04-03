@@ -30,12 +30,6 @@ describe Capistrano::Grove do
         config.grove.notify
       end
 
-      it "should notify with the :grove_message" do
-        Capistrano::Grove::Client.should_receive(:new).and_return(client)
-
-        client.should_receive(:notify).with(config.fetch(:grove_message)).and_return(true)
-      end
-
       it "should use :grove_channel_key" do
         new_channel_key = '12345678901234567890123456789012'
         config.set(:grove_channel_key, new_channel_key)
