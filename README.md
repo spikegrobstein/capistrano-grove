@@ -42,6 +42,8 @@ messages to your channel ad-hoc. For example:
 
 ## Variables
 
+The following are Capistrano variables and are used via the `set` function.
+
 ### grove_channel_token
 
 The channel key from the grove.io website. This is the only variable that is required
