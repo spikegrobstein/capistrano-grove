@@ -1,4 +1,4 @@
-# Capistrano::Grove
+# Capistrano::Grove [![Build Status](https://travis-ci.org/spikegrobstein/capistrano-grove.png)](https://travis-ci.org/spikegrobstein/capistrano-grove)
 
 Send deployment notifications to your [grove.io](http://grove.io) channel via Capistrano.
 Never again will members of your team not be made aware of events during your deployment.
