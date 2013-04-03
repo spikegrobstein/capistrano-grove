@@ -1,3 +1,10 @@
+2013-04-XX => v2.0.0pre
+
+* complete rewrite to be a true Capistrano extension
+* now built on Capnotify
+* changed grove_channel_key to grove_channel_token
+* got rid of grove_message
+
 2012-05-29 => v1.0.1
 
 documentation changes
