@@ -11,7 +11,7 @@ describe Capistrano::Grove do
 
 
   context "when notifying" do
-    context "when failing to set grove_channel_key" do
+    context "when failing to set grove_channel_token" do
 
       it "should raise an error" do
         expect { config.grove.notify }.to raise_error
@@ -19,25 +19,25 @@ describe Capistrano::Grove do
 
     end
 
-    context "when grove_channel_key is set" do
+    context "when grove_channel_token is set" do
       before do
         config.load do
-          set :grove_channel_key, 'asdfasdfasdf'
+          set :grove_channel_token, 'asdfasdfasdf'
         end
       end
 
       after do
-        config.grove.notify
+        config.grove.notify 'msg'
       end
 
-      it "should use :grove_channel_key" do
-        new_channel_key = '12345678901234567890123456789012'
-        config.set(:grove_channel_key, new_channel_key)
+      it "should use :grove_channel_token" do
+        new_channel_token = '12345678901234567890123456789012'
+        config.set(:grove_channel_token, new_channel_token)
 
         client.stub(:notify => true)
 
-        Capistrano::Grove::Client.should_receive(:new).with do |channel_key, options|
-          channel_key.should == new_channel_key
+        Capistrano::Grove::Client.should_receive(:new).with do |channel_token, options|
+          channel_token.should == new_channel_token
         end.and_return(client)
       end
 
@@ -47,7 +47,7 @@ describe Capistrano::Grove do
 
         client.stub(:notify => true)
 
-        Capistrano::Grove::Client.should_receive(:new).with do |channel_key, options|
+        Capistrano::Grove::Client.should_receive(:new).with do |channel_token, options|
           options[:service].should == new_grove_service
         end.and_return(client)
       end
@@ -58,7 +58,7 @@ describe Capistrano::Grove do
 
         client.stub(:notify => true)
 
-        Capistrano::Grove::Client.should_receive(:new).with do |channel_key, options|
+        Capistrano::Grove::Client.should_receive(:new).with do |channel_token, options|
           options[:icon_url].should == new_grove_icon_url
         end.and_return(client)
       end
@@ -69,7 +69,7 @@ describe Capistrano::Grove do
 
         client.stub(:notify => true)
 
-        Capistrano::Grove::Client.should_receive(:new).with do |channel_key, options|
+        Capistrano::Grove::Client.should_receive(:new).with do |channel_token, options|
           options[:url].should == new_grove_url
         end.and_return(client)
       end

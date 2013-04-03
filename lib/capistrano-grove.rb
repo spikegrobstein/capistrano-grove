@@ -17,7 +17,7 @@ module Capistrano
         end
 
         # the channel's API key
-        _cset(:grove_channel_key) { abort "Please set grove_channel_key!" }
+        _cset(:grove_channel_token) { abort "Please set grove_channel_token!" }
 
         # the name of the service doing the posting
         _cset :grove_service, 'DeployBot'
@@ -41,7 +41,7 @@ module Capistrano
 
     # send a notification to the grove service
     def notify(message)
-      g = Client.new(grove_channel_key,
+      g = Client.new(grove_channel_token,
         :service => grove_service,
         :icon_url => grove_icon_url,
         :url => grove_url
