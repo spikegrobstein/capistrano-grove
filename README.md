@@ -54,6 +54,20 @@ messages to your channel ad-hoc. For example:
 
     grove.notify 'Greetings from Capistrano!'
 
+## Notes for those upgrading from 1.x
+
+For users coming from the 1.x gem, 2.0 brings some changes that will break your existing
+recipes. Keep the following in mind and adjust accordingly:
+
+ * the `grove_channel_key` capistrano variable is now called `grove_channel_token`.
+   This was done to better jive with the grove.io documentation.
+ * there is no longer a `grove:notify` task. This was replaced by the `grove` capistrano
+   extension and added a `notify` function to it which takes a message as a parameter.
+   (for example: `grove.notify "hi there"`)
+ * the `grove_message` capistrano variable has been removed. Previously, this was used to
+   store the message to be posted to your grove.io channel after a deployment, but with
+   the implementation of Capnotify, it's unnecessary.
+
 ## Variables
 
 The following are Capistrano variables and are used via the `set` function.
