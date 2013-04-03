@@ -1,78 +1,87 @@
-# Capistrano grove.io notifications
+# Capistrano::Grove
 
-Easily send notifications to your [grove.io](http://grove.io) channel after a deploy.
+Send deployment notifications to your [grove.io](http://grove.io) channel via Capistrano.
+Never again will members of your team not be made aware of events during your deployment.
+Alert them to maintenance page changes, migrations and deployment events by using this gem.
 
-## Getting started
+## Installation
 
-In your application's `Gemfile` put the following:
+Add this line to your application's Gemfile:
 
     gem 'capistrano-grove'
 
+And then execute:
 
-Once you get your gems installed via `bundle install`, you can configure
-`capistrano-grove`.
+    $ bundle
 
-Alternatively, you can install `capistrano-grove` via `gem`:
+Or install it yourself as:
 
-    gem install capistrano-grove
+    $ gem install capistrano-grove
 
-At the top of your `Capfile` you should also add the following:
+In your `Capfile`, add:
 
-    require 'grove/capistrano'
+    require 'capistrano-grove'
 
-The only required parameter to use this plugin is the `grove_channel_key` variable.
-You can get your channel key from the grove.io website. Initialize it as follows:
+## Getting started
+
+Capistrano::Grove is built on Capnotify which provides a series of built-in notifications.
+This gem plugs into those notifications and sends them to your grove.io channel.
+
+Once you've gone through the above installation procedure, all you need to do is set
+your `grove_channel_token` as a Capistrano variable as follows:
 
     set :grove_channel_key, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
-`capistrano-grove` comes with one task: `grove:notify`. This task posts the
-`grove_message` variable to the grove.io service and will be usable after you set
-the above variable.
+With that, you'll start receiving notifications to your channel for migrations,
+deployment and maintenance page changes.
 
-To automatially notify on grove.io after a deploy, set an `after` hook:
+You can also use the `grove.notify` function anywhere in your Capistrano recipes to post
+messages to your channel ad-hoc. For example:
 
-    after 'deploy', 'grove:notify'
+    grove.notify 'Greetings from Capistrano!'
 
 ## Variables
 
-### grove_channel_key
+### grove_channel_token
 
 The channel key from the grove.io website. This is the only variable that is required
-to get `capistrano-grove` working.
+to get Capistrano::Grove working.
 
 ### grove_service
 
-The name of the service that the notification comes from. This should not contain
-spaces as that causes the grove.io webservice some grief.
+The name of the service, aka the handle of the user, that the notification comes from.
+
+*This should not contain spaces as that causes the grove.io webservice some grief.*
 
 ### grove_icon_url
 
-This is the URL to the icon that your notification uses.
+This should be a URL to an image that the service will use as its avatar in the channel.
 
 ### grove_url
 
 When clicking your notification in the grove.io notification window, this is the URL
 that you're taken to.
 
-### grove_message
+## Functions
 
-Each time that the `grove:notify` task is run, `grove_message` is the message that
-is posted. Typically, you'd want to set this with a block so it can be lazily
-evaluated.
+### grove.notify
 
-It defaults to:
+Capistrano::Grove comes with a single function: `grove.notify` for posting messages
+to your channel. It takes a single parameter-the message to post.
 
-    "Successful deployment of #{ fetch(:application, 'application') }."
+Example:
+
+    grove.notify "That was easy!"
 
 ## Author
 
-`capistrano-grove` is written by Spike Grobstein  
+Capistrano::Grove is written by Spike Grobstein  
 spikegrobstein@mac.com  
 http://spike.grobste.in  
 https://github.com/spikegrobstein  
 
 ## License
 
-&copy;2012 Spike Grobstein
+&copy;2012-2013 Spike Grobstein  
 MIT License (see `LICENSE` file included in this package).
 
