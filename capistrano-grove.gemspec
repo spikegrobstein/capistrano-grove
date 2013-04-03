@@ -20,4 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('capistrano', '>= 2.12.0')
   s.add_dependency('grove-rb', '>= 0.2.0')
+
+  s.add_development_dependency('rspec')
+  s.add_development_dependency('pry')
 end
