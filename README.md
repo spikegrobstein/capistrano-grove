@@ -11,7 +11,7 @@ Alert them to maintenance page changes, migrations and deployment events by usin
 
 Add this line to your application's Gemfile:
 
-    gem 'capistrano-grove'
+    gem "capistrano-grove", "~> 2.0.0pre1"
 
 And then execute:
 
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install capistrano-grove
+    $ gem install capistrano-grove --pre
 
 In your `Capfile`, add:
 

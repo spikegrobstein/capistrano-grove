@@ -1,4 +1,4 @@
-2013-04-XX => v2.0.0pre
+2013-04-03 => v2.0.0pre
 
 * complete rewrite to be a true Capistrano extension
 * now built on Capnotify
