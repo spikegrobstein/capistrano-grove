@@ -1,4 +1,4 @@
-require "capistrano"
+require "capnotify"
 require "capistrano-grove/version"
 require "capistrano-grove/client"
 require "grove-rb"
@@ -29,12 +29,12 @@ module Capistrano
         _cset :grove_url, nil
 
         # capnotify hooks
-        on(:deploy_start) { grove.notify fetch(:capnotify_deploy_start_message) }
-        on(:deploy_complete) { grove.notify fetch(:capnotify_deploy_complete_message) }
-        on(:migrate_start) { grove.notify fetch(:capnotify_migrate_start_message) }
-        on(:migrate_complete) { grove.notify fetch(:capnotify_migrate_complete_message) }
-        on(:maintenance_page_up) { grove.notify fetch(:capnotify_maintenance_page_up_message) }
-        on(:maintenance_page_down) { grove.notify fetch(:capnotify_maintenance_page_down_message) }
+        on(:deploy_start) { grove.notify fetch(:capnotify_deploy_start_msg) }
+        on(:deploy_complete) { grove.notify fetch(:capnotify_deploy_complete_msg) }
+        on(:migrate_start) { grove.notify fetch(:capnotify_migrate_start_msg) }
+        on(:migrate_complete) { grove.notify fetch(:capnotify_migrate_complete_msg) }
+        on(:maintenance_page_up) { grove.notify fetch(:capnotify_maintenance_page_up_msg) }
+        on(:maintenance_page_down) { grove.notify fetch(:capnotify_maintenance_page_down_msg) }
 
       end
     end
