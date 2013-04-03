@@ -17,7 +17,7 @@ module Capistrano
         end
 
         # the channel's API key
-        _cset(:grove_channel_key) { raise "Please set grove_channel_key!" }
+        _cset(:grove_channel_key) { abort "Please set grove_channel_key!" }
 
         # the name of the service doing the posting
         _cset :grove_service, 'DeployBot'
