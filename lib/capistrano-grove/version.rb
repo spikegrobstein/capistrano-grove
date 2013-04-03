@@ -1,5 +1,5 @@
 module Capistrano
   module Grove
-    VERSION = "1.0.1"
+    VERSION = "2.0.0pre"
   end
 end

@@ -1,5 +1,8 @@
 # Capistrano::Grove [![Build Status](https://travis-ci.org/spikegrobstein/capistrano-grove.png)](https://travis-ci.org/spikegrobstein/capistrano-grove)
 
+Note: This documentation is for the as yet to be released version 2.0.0 of Capistrano::Grove.
+I expect this to be ready for release in the next few days.
+
 Send deployment notifications to your [grove.io](http://grove.io) channel via Capistrano.
 Never again will members of your team not be made aware of events during your deployment.
 Alert them to maintenance page changes, migrations and deployment events by using this gem.
